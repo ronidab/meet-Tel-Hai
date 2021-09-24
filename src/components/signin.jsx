@@ -40,12 +40,12 @@ class Signin extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password1, name } = this.state.account;
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
-    const { email, password1, name } = this.state.account;
     try {
-      await this.context.signup(name, email, password1);
+      await this.context.register(name, email, password1);
     } catch (err) {
       console.log(err);
     }
@@ -118,34 +118,33 @@ class Signin extends Component {
               {/* explain password rules */}
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-toggle="tooltip"
                 data-placement="right"
                 title="Tooltip on right"
-                data-toggle="modal"
                 data-target="#exampleModalLong"
               >
                 ?
               </button>
 
               <div
-                class="modal fade"
+                className="modal fade"
                 id="exampleModalLong"
-                tabindex="-1"
+                tabIndex="-1"
                 role="dialog"
                 aria-hidden="true"
               >
-                <div class="modal-dialog" role="password explenation">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">
+                <div className="modal-dialog" role="password explenation">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLongTitle">
                         Your password must be 8-20 characters long, contain
                         lowercase and uppercase letters, numbers and special
                         characters.
                       </h5>
                       <button
                         type="button"
-                        class="close"
+                        className="close"
                         data-dismiss="modal"
                         aria-label="Close"
                       >
