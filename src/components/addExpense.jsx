@@ -12,7 +12,7 @@ class AddExpence extends Component {
           <div className="form-control-md p-2">
             <input type="text" class="Sum" placeholder="$" />
           </div>
-          <div className="form-control-sm p-2">
+          <div className="form-control-md p-2">
             <select
               class="custom-select my-1 mr-sm-2"
               id="inlineFormCustomSelectPref"
@@ -27,7 +27,7 @@ class AddExpence extends Component {
             <input type="date" class="form-control" />
           </div>
           <div className="form-group p-2 ">
-            <button className="btn  btn-sm">Add expense</button>
+            <button className="btn  btn-secondary -sm">Add expense</button>
           </div>
         </div>
       </form>

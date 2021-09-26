@@ -1,10 +1,8 @@
-import { error } from "jquery";
 import React, { Component } from "react";
-import { users } from "./../services/fakeUsers";
-import { AuthContext } from "./../contexts/auth";
+import { AuthContext } from "../contexts/auth";
 import { Link } from "react-router-dom";
 
-class Signin extends Component {
+class Signup extends Component {
   static contextType = AuthContext;
   state = {
     account: { name: "", email: "", password1: "", password2: "" },
@@ -48,7 +46,9 @@ class Signin extends Component {
       await this.context.register(name, email, password1);
     } catch (err) {
       console.log(err);
+      return; //handle error
     }
+    this.props.history.push("/Groups");
   };
 
   isStrongPassword(password) {
@@ -203,4 +203,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default Signup;
