@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { AuthContext } from "./../contexts/auth";
+import axios from "axios";
 
 class AddGroup extends Component {
   static contextType = AuthContext;
@@ -9,19 +10,23 @@ class AddGroup extends Component {
   };
 
   handleChange = (e) => {
-    const account = { ...this.state.account };
-    account[e.currentTarget.name] = e.currentTarget.value;
-    this.setState({ account });
+    const groupName = { ...this.state.groupName };
+    groupName[e.currentTarget.name] = e.currentTarget.value;
+    this.setState(groupName);
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await this.context.addGroup(this.state.groupName, this.props.value);
+      const { data } = await axios.post("/groups", {
+        name: this.state.groupName,
+      });
+      // add new group to navbar at to gruops
+      this.props.onAddGroup(data);
     } catch (err) {
       console.log(err);
     }
-    // add the group to user groups. this.context.currentUser.userGroups;
+    console.log(this.state.groupName);
   };
 
   render() {
@@ -34,11 +39,10 @@ class AddGroup extends Component {
           <div className="form-control-md p-2">
             <input
               type="text"
-              class=" -control"
+              className="form-control"
               placeholder="Group name"
               value={this.state.groupName}
               onChange={this.handleChange}
-              className="form-control"
               id="groupName"
               name="groupName"
             />

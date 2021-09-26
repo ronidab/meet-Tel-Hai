@@ -14,6 +14,7 @@ export class AuthProvider extends React.Component {
     localStorage.setItem("jwt-token", data.token);
     const user = jwt.decode(data.token);
     this.setState({ currentUser: user });
+    axios.defaults.headers.Authorization = `Bearer ${data.token}`;
     return user;
   };
   login = async (email, password) => {
@@ -21,30 +22,22 @@ export class AuthProvider extends React.Component {
     localStorage.setItem("jwt-token", data.token);
     const user = jwt.decode(data.token);
     this.setState({ currentUser: user });
+    axios.defaults.headers.Authorization = `Bearer ${data.token}`;
     return user;
   };
   signout() {
     localStorage.removeItem("jwt-token");
+    axios.defaults.headers.Authorization = undefined;
+
     this.setState({ currentUser: null });
   }
-
-  addGroup = async (groupName, groupsMemers, Expenses) => {
-    //move to different file?
-    const { data } = await axios.post("/addGroup", {
-      groupName,
-      groupsMemers,
-      Expenses,
-    });
-    localStorage.setItem(data.token);
-    const group = data.token;
-    return group;
-  };
 
   componentDidMount() {
     const token = localStorage.getItem("jwt-token");
     if (!token) {
       return;
     }
+    axios.defaults.headers.Authorization = `Bearer ${token}`;
     const user = jwt.decode(token);
     this.setState({ currentUser: user });
   }

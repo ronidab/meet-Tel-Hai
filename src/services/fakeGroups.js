@@ -1,4 +1,5 @@
 import * as usersAPI from "./fakeUsers";
+import axios from "axios";
 
 export const groups = [
   {
@@ -88,8 +89,17 @@ export const groups = [
 ];
 //move expenses inside the group
 
-export function getGroups() {
-  return groups;
+export async function getGroups() {
+  // try {
+  //   const { data } = await axios.post("/groups", {
+  //     name: this.state.groupName,
+  //   });
+  //   // add new group to navbar at to gruops
+  //   this.props.onAddGroup(data);
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  // return groups;
 }
 
 export function getGroup(groupId) {

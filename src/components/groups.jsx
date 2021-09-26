@@ -1,14 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/auth";
 import { getGroups } from "./../services/fakeGroups";
 import { getCurrUser } from "./../services/fakeUsers";
 import AddGroup from "./addGroup";
+import axios from "axios";
 
 class Groups extends Component {
+  static contextType = AuthContext;
   state = {
-    groups: getGroups(),
-    currentUser: getCurrUser(),
+    groups: [],
   };
+  async componentDidMount() {
+    console.log("groups mounted");
+    if (this.context) {
+      const { data } = await axios.get("/groups");
+      this.setState({ groups: data });
+    }
+  }
+  onAddGroup() {}
   render() {
     return (
       <div className="container">
