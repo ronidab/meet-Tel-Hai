@@ -21,7 +21,10 @@ export class AuthProvider extends React.Component {
 		currentUser: null,
 		//loading: false,
 	};
-
+	constructor(props) {
+		super(props);
+		this.state.currentUser = this.getUserFromLocalStorage();
+	}
 	register = async (name, email, password) => {
 		const { data } = await axios.post("/register", { name, email, password });
 		localStorage.setItem(TOKEN_KEY, data.token);
@@ -41,13 +44,15 @@ export class AuthProvider extends React.Component {
 		axios.defaults.headers.Authorization = undefined;
 		this.setState({ currentUser: null });
 	}
-
-	componentDidMount() {
+	getUserFromLocalStorage() {
 		const token = localStorage.getItem(TOKEN_KEY);
 		if (!token) {
-			return;
+			return null;
 		}
-		const user = jwt.decode(token);
+		return jwt.decode(token);
+	}
+	componentDidMount() {
+		const user = this.getUserFromLocalStorage()
 		this.setState({ currentUser: user });
 	}
 	render() {
