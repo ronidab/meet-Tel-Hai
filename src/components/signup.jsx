@@ -7,6 +7,7 @@ class Signup extends Component {
   state = {
     account: { name: "", email: "", password1: "", password2: "" },
     errors: {},
+    apiError: null,
   };
 
   validate = () => {
@@ -45,8 +46,11 @@ class Signup extends Component {
     try {
       await this.context.register(name, email, password1);
     } catch (err) {
+      this.setState({
+        apiError: { page: "somthing went wrong- try filling all the fileds" },
+      });
       console.log(err);
-      return; //handle error
+      return;
     }
     this.props.history.push("/Groups");
   };
@@ -114,47 +118,18 @@ class Signup extends Component {
                 name="password1"
                 placeholder="Password *"
               ></input>
-
               {/* explain password rules */}
               <button
                 type="button"
-                className="btn btn-secondary"
+                class="btn btn-secondary"
                 data-toggle="tooltip"
-                data-placement="right"
-                title="Tooltip on right"
-                data-target="#exampleModalLong"
+                data-placement="top"
+                title=" Your password must be 8-20 characters long, contain
+                        lowercase and uppercase letters, numbers and special
+                        characters."
               >
                 ?
               </button>
-
-              <div
-                className="modal fade"
-                id="exampleModalLong"
-                tabIndex="-1"
-                role="dialog"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog" role="password explenation">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLongTitle">
-                        Your password must be 8-20 characters long, contain
-                        lowercase and uppercase letters, numbers and special
-                        characters.
-                      </h5>
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {errors.password1 && (
                 <div className="alert alert-danger mt-2 p-0">
                   {errors.password1}
@@ -196,6 +171,13 @@ class Signup extends Component {
                 Login
               </Link>
             </p>
+            {this.state.apiError && (
+              <div class="alert alert-danger">
+                <pre>
+                  <code>{this.state.apiError}</code>
+                </pre>
+              </div>
+            )}
           </form>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

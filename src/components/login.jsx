@@ -7,6 +7,7 @@ class Login extends Component {
   state = {
     account: { email: "", password: "" },
     errors: {},
+    apiError: null,
   };
 
   validate = () => {
@@ -33,8 +34,11 @@ class Login extends Component {
     try {
       await this.context.login(email, password);
     } catch (err) {
-      this.setState({ errors: { page: "wrong email/password" } });
-      return; //handle error
+      this.setState({
+        apiError: { page: "somthing went wrong- try filling all the fileds" },
+      });
+      console.log(err);
+      return;
     }
     this.props.history.push("/Groups");
   };
@@ -101,6 +105,13 @@ class Login extends Component {
                 register
               </Link>
             </p>
+            {this.state.apiError && (
+              <div class="alert alert-danger">
+                <pre>
+                  <code>{this.state.apiError}</code>
+                </pre>
+              </div>
+            )}
           </form>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

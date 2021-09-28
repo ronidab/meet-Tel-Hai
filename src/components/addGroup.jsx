@@ -8,6 +8,7 @@ class AddGroup extends Component {
   state = {
     groupName: "",
     errors: [],
+    apiError: null,
   };
 
   handleChange = (e) => {
@@ -27,6 +28,9 @@ class AddGroup extends Component {
       });
       // add new group to navbar at to gruops
     } catch (err) {
+      this.setState({
+        apiError: { page: "somthing went wrong- try filling all the fileds" },
+      });
       console.log(err);
       return;
     }
@@ -78,6 +82,13 @@ class AddGroup extends Component {
             <button className="btn  btn-secondary">Create new group</button>
           </div>
         </div>
+        {this.state.apiError && (
+          <div class="alert alert-danger">
+            <pre>
+              <code>{this.state.apiError}</code>
+            </pre>
+          </div>
+        )}
       </form>
     );
   }
