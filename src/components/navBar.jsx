@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { getGroups } from "./../services/fakeGroups";
-import { Link, NavLink } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { AuthContext } from "./../contexts/auth";
 
 class NavBar extends Component {
   static contextType = AuthContext;
+
+  handleLogOut = () => {
+    this.context.signout();
+    //return <Redirect to="/login" />;
+  };
   render() {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark text-light bg-dark">
@@ -12,9 +16,11 @@ class NavBar extends Component {
           <NavLink className="navbar-brand" to="/">
             SplitBills
           </NavLink>
-          <NavLink className="navbar-brand" to="/groups">
-            My groups
-          </NavLink>
+          {this.context.currentUser && (
+            <NavLink className="navbar-brand" to="/groups">
+              My groups
+            </NavLink>
+          )}
           {this.context.currentUser && (
             <div className="d-flex ml-auto">
               <span className="navbar-text mx-2">
@@ -23,7 +29,7 @@ class NavBar extends Component {
               <div>
                 <button
                   className="btn btn-dark my-2 my-sm-0 "
-                  onClick={() => this.context.signout()} //add redirect to home when logout
+                  onClick={() => this.handleLogOut()} //add redirect to home when logout
                 >
                   sign out
                 </button>

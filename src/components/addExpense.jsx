@@ -8,9 +8,10 @@ class AddExpence extends Component {
   componentDidMount() {}
   state = {
     title: "",
-    sum: 0,
+    sum: "",
     category: "",
     date: 0,
+    errors: [],
   };
 
   handleChange = (e) => {
@@ -22,16 +23,52 @@ class AddExpence extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { groupId } = this.props;
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
+    if (errors) return;
     try {
       await splitBillService.addExpense(groupId, this.state);
     } catch (err) {
-      this.setState({ errors: { page: "wrong email/password" } });
+      this.setState({
+        errors: { page: "somthing went wrong- try filling all the fileds" },
+      });
       console.log(err);
       return; //handle error
     }
+
+    this.props.setStateOfExpenses();
+    this.resetFileds();
+  };
+
+  validate = () => {
+    const errors = {};
+    const { title, sum, category } = this.state;
+    if (title.trim() === "") {
+      errors.title = "Name is requierd.";
+    }
+    if (sum.trim() === "") {
+      errors.sum = "Sum must be a Number bigger then 0.";
+    }
+    if (category.trim() === "") {
+      errors.category = "Category is requierd.";
+    }
+    return Object.keys(errors).length === 0 ? null : errors;
+  };
+
+  resetFileds = () => {
+    const expensesFileds = this.state;
+    expensesFileds.title = "";
+    expensesFileds.sum = "";
+    expensesFileds.category = "";
+    expensesFileds.date = 0;
+    this.setState({
+      expensesFileds,
+    });
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <form
         className="border border-dark bg-info p-3"
@@ -48,6 +85,9 @@ class AddExpence extends Component {
               id="title"
               name="title"
             />
+            {errors.title && (
+              <div className="alert alert-danger mt-2 p-0">{errors.title}</div>
+            )}
           </div>
           <div className="form-control-md p-2">
             <input
@@ -59,6 +99,9 @@ class AddExpence extends Component {
               id="sum"
               name="sum"
             />
+            {errors.sum && (
+              <div className="alert alert-danger mt-2 p-0">{errors.sum}</div>
+            )}
           </div>
           <div className="form-control-md p-2">
             <select
@@ -73,6 +116,11 @@ class AddExpence extends Component {
               <option>Bills</option>
               <option>Others</option>
             </select>
+            {errors.category && (
+              <div className="alert alert-danger mt-2 p-0">
+                {errors.category}
+              </div>
+            )}
           </div>
           <div className="form-control-md p-2">
             <input
