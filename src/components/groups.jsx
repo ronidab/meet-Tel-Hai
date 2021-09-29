@@ -7,7 +7,7 @@ import splitBillService from "../services/SplitBillService";
 class Groups extends Component {
   static contextType = AuthContext;
   state = {
-    groups: [],
+    groups: null,
   };
   async componentDidMount() {
     try {
@@ -24,6 +24,9 @@ class Groups extends Component {
   };
 
   render() {
+    if (this.state.groups === null) {
+      return <p>loading...</p>;
+    }
     if (this.state.groups.length === 0) {
       return (
         <div className="container">
@@ -38,20 +41,16 @@ class Groups extends Component {
     } else {
       return (
         <div className="container">
-          <h3>My groups:</h3>
+          <h4 className="text-center">Choose a group or creat a new one:</h4>
           {this.state.groups.map((group, i) => (
-            <div className="card-group" key={i}>
-              <div className="card p-2 m-2">
-                <Link
-                  to={`expenses/${group._id}`}
-                  className="btn btn-outline-info"
-                >
-                  {group.name}
-                </Link>
-                <pre>
-                  <code>{JSON.stringify(group, null, 2)}</code>
-                </pre>
-              </div>
+            <div className="card p-2 m-2 border-light">
+              <Link
+                to={`expenses/${group._id}`}
+                className="btn btn-outline-info"
+              >
+                {group.name}
+              </Link>
+              <pre></pre>
             </div>
           ))}
           <AddGroup setStateOfGroups={this.setStateOfGroups} />
