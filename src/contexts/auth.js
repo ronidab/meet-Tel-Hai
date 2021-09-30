@@ -26,14 +26,15 @@ export class AuthProvider extends React.Component {
 		this.state.currentUser = this.getUserFromLocalStorage();
 	}
 	register = async (name, email, password) => {
-		const { data } = await axios.post("/register", { name, email, password });
+		const { data } = await axios.post("/api/auth/register", { name, email, password });
 		localStorage.setItem(TOKEN_KEY, data.token);
 		const user = jwt.decode(data.token);
 		this.setState({ currentUser: user });
 		return user;
 	};
+
 	login = async (email, password) => {
-		const { data } = await axios.post("/login", { email, password });
+		const { data } = await axios.post("/api/auth/login", { email, password });
 		localStorage.setItem(TOKEN_KEY, data.token);
 		const user = jwt.decode(data.token);
 		this.setState({ currentUser: user });
