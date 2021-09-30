@@ -28,8 +28,8 @@ app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/groups', jwtMiddleware, groupRouter);
 if (PRODUCTION) {
-	app.get('/*', (req, res) => {
-		res.sendFile(path.resolve('../build/index.html'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve('build/index.html'));
 	})
 }
 app.listen(PORT);
