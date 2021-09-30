@@ -77,7 +77,7 @@ class AddExpence extends Component {
 
     return (
       <form
-        className="border border-dark bg-info p-3"
+        className="border border-dark border-rounded bg-info p-3"
         onSubmit={this.handleSubmit}
       >
         <div className="form-inline">

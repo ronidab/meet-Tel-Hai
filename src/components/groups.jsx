@@ -43,7 +43,7 @@ class Groups extends Component {
         <div className="container">
           <h4 className="text-center">Choose a group or creat a new one:</h4>
           {this.state.groups.map((group, i) => (
-            <div className="card p-2 m-2 border-light">
+            <div className="card p-2 m-2 border-light border-rounded">
               <Link
                 to={`expenses/${group._id}`}
                 className="btn btn-outline-info"

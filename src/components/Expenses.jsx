@@ -128,7 +128,10 @@ class Expenses extends Component {
           </div>
           <div className="row">
             {this.state.expenses.map((expense) => (
-              <div className="card border-info m-2 w-20" key={expense._id}>
+              <div
+                className="card border-info border-rounded m-2 w-20"
+                key={expense._id}
+              >
                 <div className="card-header">{expense.title}</div>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">
@@ -168,7 +171,10 @@ class Expenses extends Component {
             </h2>
           </div>
           {this.state.members?.map((user) => (
-            <div class="card w-90 m-1 border-info" key={user._id}>
+            <div
+              class="card w-90 m-1 border-info border-rounded w-25 col-md-w-50 col-sm-w-100, "
+              key={user._id}
+            >
               <div class="card-body">
                 <h5 class="card-title">{user.name}</h5>
                 <p class="card-text">{"Spend " + this.userSum(user) + "$"}</p>
