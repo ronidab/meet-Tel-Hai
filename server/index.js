@@ -8,7 +8,7 @@ const jwtMiddleware = require("./middleware/jwt");
 
 const PORT = process.env.PORT || 3001;
 const PRODUCTION = process.env.NODE_ENV === 'production'
-
+console.log(process.env.NODE_ENV)
 mongoose
 	.connect(process.env.DB_URI, {
 		auth: {
