@@ -76,9 +76,9 @@ class AddExpence extends Component {
 		const { errors } = this.state;
 
 		return (
-			<div className="card">
+			<div className="card bg-info w-100">
 				<form
-					className="border border-dark rounded bg-info w-100"
+					// className="border border-dark rounded bg-info w-100"
 					onSubmit={this.handleSubmit}
 				>
 					<div className="form-inline">
