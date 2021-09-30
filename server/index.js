@@ -8,7 +8,7 @@ const jwtMiddleware = require("./middleware/jwt");
 
 const PORT = process.env.PORT || 3001;
 const PRODUCTION = process.env.NODE_ENV === 'production'
-console.log(process.env.NODE_ENV)
+
 mongoose
 	.connect(process.env.DB_URI, {
 		auth: {
@@ -22,14 +22,14 @@ mongoose
 
 const app = express();
 if (PRODUCTION) {
-	app.use(express.static('/build'));
+	app.use(express.static(path.resolve('build')));
 }
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/groups', jwtMiddleware, groupRouter);
 if (PRODUCTION) {
 	app.get('/*', (req, res) => {
-		res.sendFile(path.resolve('build/index.html'));
+		res.sendFile(path.resolve('../build/index.html'));
 	})
 }
 app.listen(PORT);
