@@ -121,7 +121,7 @@ class AddExpence extends Component {
                 name="category"
               >
                 <option>Category...</option>
-                <option>Grocerirs</option>
+                <option>Groceries</option>
                 <option>Bills</option>
                 <option>Others</option>
               </select>
