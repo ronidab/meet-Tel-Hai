@@ -14,6 +14,7 @@ class Homse extends Component {
             {/* <pre>{JSON.stringify(this.context.currentUser, null, 2)}</pre> */}
             Find your match, Create relationships in Tel-Hai community 
             <nl></nl>log in and we will do the rest for you
+            <img src="/homepagepic.jpg" class="img-fluid" alt="Responsive image"></img>
           </h5>
         </div>
       </div>
