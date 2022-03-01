@@ -9,7 +9,7 @@ class Homse extends Component {
     return (
       <div className="row h-100 bg-info">
         <div className="col p-3 container">
-          <h1 className="text-dark text-center">SplitBills</h1>
+          <h1 className="text-dark text-center">MeetTelHai</h1>
           <h5 className="text-center">
             {/* <pre>{JSON.stringify(this.context.currentUser, null, 2)}</pre> */}
             Create your commune, call your friends, enter your expenses and we will
