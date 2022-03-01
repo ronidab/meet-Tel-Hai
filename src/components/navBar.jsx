@@ -14,12 +14,12 @@ class NavBar extends Component {
       <nav className="navbar navbar-expand navbar-dark text-light bg-dark -sm">
         <div className="container">
           <NavLink className="navbar-brand" to="/">
-            SplitBills
+            MeetTelHai
           </NavLink>
           {/*rander next code only of there is a current user*/}
           {this.context.currentUser && (
             <NavLink className="navbar-brand" to="/groups">
-              My groups
+              My Matching
             </NavLink>
           )}
           {this.context.currentUser && (
