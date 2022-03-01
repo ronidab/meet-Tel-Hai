@@ -10,13 +10,15 @@ class Homse extends Component {
       <div className="row h-100 bg-danger">
         <div className="col p-3 container">
           <h1 className="text-dark text-center">MeetTelHai</h1>
-          <h5 className="text-center">
+          <h3 className="text-center">
             {/* <pre>{JSON.stringify(this.context.currentUser, null, 2)}</pre> */}
             Find your match, <br></br>
             Create relationships in Tel-Hai community <br></br>
-            <br></br>log in and we will do the rest for you<br></br>
-            <img src="homepagepic.jpg" alt="Love img"></img>
-          </h5>
+          </h3>
+            
+          <h5><br></br>log in and we will do the rest for you<br></br></h5>
+          <img src="homepagepic.jpg"></img>
+          
         </div>
       </div>
     );
