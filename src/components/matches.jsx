@@ -1,63 +1,63 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/auth";
-import AddGroup from "./addGroup";
+import AddMatch from "./addMatch";
 import splitBillService from "../services/SplitBillService";
 
-class Groups extends Component {
+class Matches extends Component {
   static contextType = AuthContext;
   state = {
-    groups: null,
+    match: null,
   };
   async componentDidMount() {
     try {
-      const { data } = await splitBillService.allGroups();
-      this.setState({ groups: data });
+      const { data } = await splitBillService.allMatches();
+      this.setState({ match: data });
     } catch (err) {
       console.error(err);
     }
   }
 
-  setStateOfGroups = () => {
+  setStateOfMatches = () => {
     console.log("remounting");
     this.componentDidMount();
   };
 
   render() {
-    if (this.state.groups === null) {
+    if (this.state.match === null) {
       return <p>loading...</p>;
     }
-    if (this.state.groups.length === 0) {
+    if (this.state.match.length === 0) {
       return (
         <div className="container">
           <h2 className="text-center">
             {" "}
-            You are not apart of any group, creat a new group or ask you'r
+            You are not apart of any match, creat a new match or ask you'r
             friends to send you a link{" "}
           </h2>
-          <AddGroup setStateOfGroups={this.setStateOfGroups} />;
+          <AddMatch setStateOfMatches={this.setStateOfMatches} />;
         </div>
       );
     } else {
       return (
         <div className="container">
-          <h4 className="text-center">Choose a group or creat a new one:</h4>
-          {this.state.groups.map((group, i) => (
+          <h4 className="text-center">Choose a match or creat a new one:</h4>
+          {this.state.match.map((match, i) => (
             <div className="card p-2 m-2 border-light border-rounded">
               <Link
-                to={`expenses/${group._id}`}
+                to={`expenses/${match._id}`}
                 className="btn btn-outline-info"
               >
-                {group.name}
+                {match.name}
               </Link>
               <pre></pre>
             </div>
           ))}
-          <AddGroup setStateOfGroups={this.setStateOfGroups} />
+          <AddMatch setStateOfMatches={this.setStateOfMatches} />
         </div>
       );
     }
   }
 }
 
-export default Groups;
+export default Matches;

@@ -25,14 +25,14 @@ class AddExpence extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { groupId, onAddExpense } = this.props;
+    const { matchId, onAddExpense } = this.props;
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
       //call server
       const { data: expense } = await splitBillService.addExpense(
-        groupId,
+        matchId,
         this.state
       );
       onAddExpense(expense);
@@ -140,7 +140,7 @@ class AddExpence extends Component {
                 name="date"
               />
             </div>
-            <div className="form-group p-2 ">
+            <div className="form-match p-2 ">
               <button className="btn  btn-secondary -sm">Add expense</button>
             </div>
           </div>

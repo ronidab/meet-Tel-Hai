@@ -40,7 +40,7 @@ class Login extends Component {
       console.log(err);
       return;
     }
-    this.props.history.push("/Groups");
+    this.props.history.push("/Matches");
   };
 
   handleChange = (e) => {
@@ -56,10 +56,10 @@ class Login extends Component {
       <div className="row pt-5">
         <div className="col-12 offset-md-4 col-md-4 mt-1 justify-content-center">
           <form
-            className="py-1 border rounded p-2 bg-info"
+            className="py-1 border rounded p-2 bg-danger"
             onSubmit={this.handleSubmit}
           >
-            <div className="form-group">
+            <div className="form-match">
               <input
                 value={account.email}
                 onChange={this.handleChange}
@@ -75,7 +75,7 @@ class Login extends Component {
                 </div>
               )}
             </div>
-            <div className="form-group">
+            <div className="form-match">
               <input
                 value={account.password}
                 onChange={this.handleChange}

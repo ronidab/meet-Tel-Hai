@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const groupRouter = require("./routes/groups");
+const matchRouter = require("./routes/matches");
 const authRouter = require("./routes/auth");
 const path = require('path');
 const jwtMiddleware = require("./middleware/jwt");
@@ -26,7 +26,7 @@ if (PRODUCTION) {
 }
 app.use(express.json());
 app.use('/api/auth', authRouter);
-app.use('/api/groups', jwtMiddleware, groupRouter);
+app.use('/api/matches', jwtMiddleware, matchRouter);
 if (PRODUCTION) {
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve('build/index.html'));

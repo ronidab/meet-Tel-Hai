@@ -52,7 +52,7 @@ class Signup extends Component {
       console.log(err);
       return;
     }
-    this.props.history.push("/Groups");
+    this.props.history.push("/Matches");
   };
 
   isStrongPassword(password) {
@@ -74,10 +74,10 @@ class Signup extends Component {
       <div className="row pt-5">
         <div className="col-12 offset-md-4 col-md-4 mt-1 justify-content-center">
           <form
-            className="py-1 border rounded p-2 bg-info"
+            className="py-1 border rounded p-2 bg-danger"
             onSubmit={this.handleSubmit}
           >
-            <div className="form-group">
+            <div className="form-match">
               <input
                 value={account.name}
                 onChange={this.handleChange}
@@ -92,7 +92,7 @@ class Signup extends Component {
               )}
             </div>
 
-            <div className="form-group">
+            <div className="form-match">
               <input
                 value={account.email}
                 onChange={this.handleChange}
@@ -108,7 +108,7 @@ class Signup extends Component {
                 </div>
               )}
             </div>
-            <div className="input-group mb-3">
+            <div className="input-match mb-3">
               <input
                 value={account.password1}
                 onChange={this.handleChange}
@@ -136,7 +136,7 @@ class Signup extends Component {
                 </div>
               )}
             </div>
-            <div className="form-group">
+            <div className="form-match">
               <input
                 value={account.password2}
                 onChange={this.handleChange}

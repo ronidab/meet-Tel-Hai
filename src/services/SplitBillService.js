@@ -1,18 +1,18 @@
 import axios from "axios";
 
 class SplitBillService {
-	allGroups = () => axios.get("/api/groups");
-	groupById = (id) => axios.get(`/api/groups/${id}`);
-	addGroup = ({ name }) => axios.post("/api/groups", { name });
+	allMatches = () => axios.get("/api/match");
+	matchById = (id) => axios.get(`/api/match/${id}`);
+	addMatch = ({ name }) => axios.post("/api/match", { name });
 
-	addExpense = (groupId, { title, sum, category, date }) => {
-		return axios.post(`/api/groups/${groupId}`, { title, sum, category, date });
+	addExpense = (matchId, { title, sum, category, date }) => {
+		return axios.post(`/api/match/${matchId}`, { title, sum, category, date });
 	};
-	deleteExpense = (groupId, expenseId) => {
-		return axios.delete(`/api/groups/${groupId}/${expenseId}`);
+	deleteExpense = (matchId, expenseId) => {
+		return axios.delete(`/api/match/${matchId}/${expenseId}`);
 	};
-	joinGroup = (groupId) => {
-		return axios.post(`/api/groups/${groupId}/join`);
+	joinMatch = (matchId) => {
+		return axios.post(`/api/match/${matchId}/join`);
 	};
 }
 

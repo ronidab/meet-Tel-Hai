@@ -2,44 +2,44 @@ import React, { Component } from "react";
 import SplitBillService from "../services/SplitBillService";
 import { AuthContext } from "./../contexts/auth";
 
-class JoinGroupPage extends Component {
+class JoinMatchPage extends Component {
   static contextType = AuthContext;
   state = {
-    group: null,
+    match: null,
     apiError: null,
   };
   async componentDidMount() {
-    const { groupId } = this.props.match.params;
-    console.log({ groupId });
-    const { data: group } = await SplitBillService.groupById(groupId);
-    // check if user is allready in group
-    this.setState({ group });
+    const { matchId } = this.props.match.params;
+    console.log({ matchId });
+    const { data: match } = await SplitBillService.matchById(matchId);
+    // check if user is allready in match
+    this.setState({ match });
   }
-  handleJoinGroup = async () => {
-    const { groupId } = this.props.match.params;
+  handleJoinMatch = async () => {
+    const { matchId } = this.props.match.params;
     try {
       //call server
-      await SplitBillService.joinGroup(groupId);
+      await SplitBillService.joinMatch(matchId);
     } catch (err) {
       this.setState({
         apiError: "somthing went wrong- try filling all the fileds",
       });
       return;
     }
-    // redirect to group page
-    this.props.history.push("/expenses/" + groupId);
+    // redirect to match page
+    this.props.history.push("/expenses/" + matchId);
   };
   render() {
     return (
       <div className="row h-100 bg-info">
         <div className="col text-center">
-          Would you like to join {this.state?.group?.name} ?
+          Would you like to join {this.state?.match?.name} ?
           <button
             className="btn btn-secondary m-3"
-            onClick={this.handleJoinGroup}
+            onClick={this.handleJoinMatch}
           >
             {" "}
-            Join Group{" "}
+            Join Match{" "}
           </button>
         </div>
       </div>
@@ -47,4 +47,4 @@ class JoinGroupPage extends Component {
   }
 }
 
-export default JoinGroupPage;
+export default JoinMatchPage;

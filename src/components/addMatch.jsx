@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import { AuthContext } from "./../contexts/auth";
+import { AuthContext } from "../contexts/auth";
 import splitBillService from "../services/SplitBillService";
 
-class AddGroup extends Component {
+class AddMatch extends Component {
   static contextType = AuthContext;
 
   state = {
-    groupName: "",
+    matchName: "",
     errors: [],
     apiError: null,
   };
 
   handleChange = (e) => {
-    const groupName = { ...this.state.groupName };
-    groupName[e.currentTarget.name] = e.currentTarget.value;
-    this.setState(groupName);
+    const matchName = { ...this.state.matchName };
+    matchName[e.currentTarget.name] = e.currentTarget.value;
+    this.setState(matchName);
   };
 
   handleSubmit = async (e) => {
@@ -23,8 +23,8 @@ class AddGroup extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
-      await splitBillService.addGroup({
-        name: this.state.groupName,
+      await splitBillService.addMatch({
+        name: this.state.matchName,
       });
     } catch (err) {
       this.setState({
@@ -33,22 +33,22 @@ class AddGroup extends Component {
       console.log(err);
       return;
     }
-    console.log(this.state.groupName);
-    this.props.setStateOfGroups();
+    console.log(this.state.matchName);
+    this.props.setStateOfMatches();
     this.resetFileds();
   };
 
   validate = () => {
     const errors = {};
-    if (this.state.groupName.trim() === "") {
-      errors.groupName = "Name is requierd.";
+    if (this.state.matchName.trim() === "") {
+      errors.matchName = "Name is requierd.";
     }
     return Object.keys(errors).length === 0 ? null : errors;
   };
 
   resetFileds = () => {
     const fileds = this.state;
-    fileds.groupName = "";
+    fileds.matchName = "";
     this.setState({
       fileds,
     });
@@ -65,20 +65,20 @@ class AddGroup extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Group name"
-              value={this.state.groupName}
+              placeholder="Match name"
+              value={this.state.matchName}
               onChange={this.handleChange}
-              id="groupName"
-              name="groupName"
+              id="matchName"
+              name="matchName"
             />
-            {this.state.errors.groupName && (
+            {this.state.errors.matchName && (
               <div className="alert alert-danger mt-2 p-0">
-                {this.state.errors.groupName}
+                {this.state.errors.matchName}
               </div>
             )}
           </div>
-          <div className="form-group p-2 ">
-            <button className="btn  btn-secondary">Create new group</button>
+          <div className="form-match p-2 ">
+            <button className="btn  btn-secondary">Create new match</button>
           </div>
         </div>
         {this.state.apiError && (
@@ -93,4 +93,4 @@ class AddGroup extends Component {
   }
 }
 
-export default AddGroup;
+export default AddMatch;

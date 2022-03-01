@@ -1,13 +1,13 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Expenses from "./components/Expenses";
-import Groups from "./components/groups";
+import Matches from "./components/matches";
 import NavBar from "./components/navBar";
 import Signup from "./components/signup";
 import Login from "./components/login";
 import Home from "./components/home";
 import ProtectedRoute from "./components/ProtectedRoute";
-import JoinGroupPage from "./components/JoinGroupPage";
+import JoinMatchPage from "./components/JoinMatchPage";
 
 function App() {
 	return (
@@ -16,9 +16,9 @@ function App() {
 			<div className="col">
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<ProtectedRoute path="/groups" component={Groups} />
-					<ProtectedRoute path="/expenses/:groupId" component={Expenses} />
-					<ProtectedRoute path="/join/:groupId" component={JoinGroupPage} />
+					<ProtectedRoute path="/matches" component={Matches} />
+					<ProtectedRoute path="/expenses/:matchId" component={Expenses} />
+					<ProtectedRoute path="/join/:matchId" component={JoinMatchPage} />
 					<Route path="/signup" component={Signup} />
 					<Route path="/login" component={Login} />
 				</Switch>

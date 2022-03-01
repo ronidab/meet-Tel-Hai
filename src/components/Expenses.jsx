@@ -13,28 +13,28 @@ class Expenses extends Component {
   };
 
   inviteLink() {
-    return window.location.origin + "/join/" + this.props.match.params.groupId;
+    return window.location.origin + "/join/" + this.props.match.params.matchId;
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // if (prevProps.match.params.groupId !== this.props.match.params.groupId) {
-    //   this.loadGroup();
+    // if (prevProps.match.params.matchId !== this.props.match.params.matchId) {
+    //   this.loadMatch();
     // }
   }
   async componentDidMount() {
-    const { groupId } = this.props.match.params;
-    const { data } = await splitBillService.groupById(groupId);
+    const { matchId } = this.props.match.params;
+    const { data } = await splitBillService.matchById(matchId);
     this.setState({ ...data });
     console.log(data);
     console.log(this.context.currentUser);
   }
 
   handleDelete = (expense) => {
-    const { groupId } = this.props.match.params;
+    const { matchId } = this.props.match.params;
     const expenses = this.state.expenses.filter((e) => e._id !== expense._id);
     this.setState({ expenses });
     console.log("delete");
-    splitBillService.deleteExpense(groupId, expense._id);
+    splitBillService.deleteExpense(matchId, expense._id);
   };
 
   userSum = (user) => {
@@ -59,8 +59,8 @@ class Expenses extends Component {
 
     const final = perUser - this.userSum(user);
     return final >= 0
-      ? "Member owes the group: " + final + "$"
-      : "Group owes member: " + final * -1 + "$";
+      ? "Member owes the match: " + final + "$"
+      : "Match owes member: " + final * -1 + "$";
   };
 
   onAddExpense = (expense) => {
@@ -73,7 +73,7 @@ class Expenses extends Component {
     if (this.state.expenses === null) {
       return <p>loading...</p>;
     }
-    const { groupId } = this.props.match.params;
+    const { matchId } = this.props.match.params;
     return (
       <div className="container">
         <div className="row">
@@ -95,7 +95,7 @@ class Expenses extends Component {
           {this.state.expenses.length === 0 && (
             <div className="col-12">
               <h2 className="text-center">
-                There are no expenses for this group
+                There are no expenses for this match
               </h2>
             </div>
           )}
@@ -106,20 +106,20 @@ class Expenses extends Component {
             >
               <div className="card border-info rounded w-100">
                 <div className="card-header">{expense.title}</div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
+                <ul className="list-match list-match-flush">
+                  <li className="list-match-item">
                     {"Date: "}
                     {new Date(expense.date).toLocaleDateString()}
                   </li>
-                  <li className="list-group-item">
+                  <li className="list-match-item">
                     {"Sum: "}
                     {expense.sum}
                   </li>
-                  <li className="list-group-item">
+                  <li className="list-match-item">
                     {"Category: "}
                     {expense.category}
                   </li>
-                  <li className="list-group-item">
+                  <li className="list-match-item">
                     {"User name: "}
                     {expense.user.name}
                   </li>
@@ -138,7 +138,7 @@ class Expenses extends Component {
         </div>
         <div className="row">
           <div className="col-12">
-            <AddExpence groupId={groupId} onAddExpense={this.onAddExpense} />
+            <AddExpence matchId={matchId} onAddExpense={this.onAddExpense} />
           </div>
         </div>
         <div className="row">
