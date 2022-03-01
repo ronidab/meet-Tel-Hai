@@ -12,7 +12,7 @@ class Homse extends Component {
           <h1 className="text-dark text-center">SplitBills</h1>
           <h5 className="text-center">
             {/* <pre>{JSON.stringify(this.context.currentUser, null, 2)}</pre> */}
-            Create a group, call your friends, enter your expenses and we will
+            Create your commune, call your friends, enter your expenses and we will
             do the rest for you
           </h5>
         </div>
