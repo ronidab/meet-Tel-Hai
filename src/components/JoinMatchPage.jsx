@@ -22,7 +22,7 @@ class JoinMatchPage extends Component {
       await SplitBillService.joinMatch(matchId);
     } catch (err) {
       this.setState({
-        apiError: "somthing went wrong- try filling all the fileds",
+        apiError: "Something went wrong- try filling all the fields",
       });
       return;
     }
@@ -39,7 +39,7 @@ class JoinMatchPage extends Component {
             onClick={this.handleJoinMatch}
           >
             {" "}
-            Join Match{" "}
+            Open Match{" "}
           </button>
         </div>
       </div>

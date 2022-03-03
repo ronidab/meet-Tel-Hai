@@ -28,7 +28,7 @@ class AddMatch extends Component {
       });
     } catch (err) {
       this.setState({
-        apiError: "somthing went wrong- try filling all the fileds",
+        apiError: "Something went wrong- try filling all the fields",
       });
       console.log(err);
       return;
@@ -41,7 +41,7 @@ class AddMatch extends Component {
   validate = () => {
     const errors = {};
     if (this.state.matchName.trim() === "") {
-      errors.matchName = "Name is requierd.";
+      errors.matchName = "Name is required.";
     }
     return Object.keys(errors).length === 0 ? null : errors;
   };

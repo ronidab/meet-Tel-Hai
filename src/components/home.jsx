@@ -13,11 +13,11 @@ class Homse extends Component {
           <h3 className="text-center">
             {/* <pre>{JSON.stringify(this.context.currentUser, null, 2)}</pre> */}
             Find your match,<br></br>
-            Create relationships in Tel-Hai community <br></br>
+            Create a relationship, here at our Tel-Hai community <br></br>
           </h3>
             
           <h5 className="text-center">
-            swipe right or left, maybe your love is there<br></br>
+            Swipe right and you might meet, left and won't :) <br></br>
           </h5>          
         </div>
       </div>

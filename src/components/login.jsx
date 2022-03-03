@@ -15,11 +15,11 @@ class Login extends Component {
     const { account } = this.state;
 
     if (account.email.trim() === "") {
-      errors.email = "email is requierd.";
+      errors.email = "Email is required.";
     }
 
     if (account.password.trim() === "") {
-      errors.password = "Password is requierd.";
+      errors.password = "Password is required.";
     }
 
     return Object.keys(errors).length === 0 ? null : errors;
@@ -35,7 +35,7 @@ class Login extends Component {
       await this.context.login(email, password);
     } catch (err) {
       this.setState({
-        apiError: "somthing went wrong- try filling all the fileds",
+        apiError: "Something went wrong- try filling all the fields",
       });
       console.log(err);
       return;

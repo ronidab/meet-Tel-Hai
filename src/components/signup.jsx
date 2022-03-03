@@ -15,21 +15,21 @@ class Signup extends Component {
     const { account } = this.state;
 
     if (account.name.trim() === "") {
-      errors.name = "Name is requierd.";
+      errors.name = "Name is required.";
     }
 
     if (account.email.trim() === "") {
-      errors.email = "email is requierd.";
+      errors.email = "email is required.";
     }
 
     if (account.password1.trim() === "") {
-      errors.password1 = "Password is requierd.";
+      errors.password1 = "Password is required.";
     } else if (!this.isStrongPassword(account.password1.trim())) {
       errors.password1 = "Password is weak";
     }
 
     if (account.password2.trim() === "") {
-      errors.password2 = "Password validation is requierd.";
+      errors.password2 = "Password validation is required.";
     } else if (account.password1.trim() !== account.password2.trim()) {
       errors.password2 = "Password do not match.";
     }
@@ -47,7 +47,7 @@ class Signup extends Component {
       await this.context.register(name, email, password1);
     } catch (err) {
       this.setState({
-        apiError: "somthing went wrong- try filling all the fileds",
+        apiError: "Something went wrong- try filling all the fields",
       });
       console.log(err);
       return;

@@ -38,7 +38,7 @@ class AddExpence extends Component {
       onAddExpense(expense);
     } catch (err) {
       this.setState({
-        apiError: "somthing went wrong- try filling all the fileds",
+        apiError: "Something went wrong- try filling all the fields",
       });
       console.log(err);
       return;
@@ -50,13 +50,13 @@ class AddExpence extends Component {
     const errors = {};
     const { title, sum, category } = this.state;
     if (title.trim() === "") {
-      errors.title = "Name is requierd.";
+      errors.title = "Name is required.";
     }
     if (sum.trim() === "") {
       errors.sum = "Sum must be a Number bigger then 0.";
     }
     if (category.trim() === "") {
-      errors.category = "Category is requierd.";
+      errors.category = "Category is required.";
     }
     return Object.keys(errors).length === 0 ? null : errors;
   };
