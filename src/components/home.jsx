@@ -17,10 +17,8 @@ class Homse extends Component {
           </h3>
             
           <h5 className="text-center">
-            swipe right or left and we will do the rest for you<br></br>
-          </h5>
-          <img src="homepagepic.jpg"></img>
-          
+            swipe right or left, maybe your love is there<br></br>
+          </h5>          
         </div>
       </div>
     );

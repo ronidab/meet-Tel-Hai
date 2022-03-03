@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class Signup extends Component {
   static contextType = AuthContext;
   state = {
-    account: { name: "", email: "", password1: "", password2: "" },
+    account: { name: "",gender: "", attract_to:"", email: "", password1: "", password2: "" },
     errors: {},
     apiError: null,
   };
