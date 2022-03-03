@@ -5,6 +5,7 @@ class Homse extends Component {
   static contextType = AuthContext;
   state = {};
   render() {
+    console.log("render!!")
     console.log(this.context);
     return (
       <div className="row h-100 bg-danger">

@@ -40,7 +40,8 @@ class Login extends Component {
       console.log(err);
       return;
     }
-    this.props.history.push("/Matches");
+    // change to swiping page
+    this.props.history.push("/Matches"); 
   };
 
   handleChange = (e) => {

@@ -18,6 +18,14 @@ class Signup extends Component {
       errors.name = "Name is requierd.";
     }
 
+    if (account.gender.trim() === "") {
+      errors.gender = "gender is requierd.";
+    }
+
+    if (account.attract_to.trim() === "") {
+      errors.attract_to = "attraction is requierd.";
+    }
+
     if (account.email.trim() === "") {
       errors.email = "email is requierd.";
     }
@@ -39,12 +47,12 @@ class Signup extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password1, name } = this.state.account;
+    const { name, gender,attract_to,email, password1 } = this.state.account;
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
-      await this.context.register(name, email, password1);
+      await this.context.register(name,gender,attract_to, email, password1);
     } catch (err) {
       this.setState({
         apiError: "somthing went wrong- try filling all the fileds",
@@ -89,6 +97,36 @@ class Signup extends Component {
               ></input>
               {errors.name && (
                 <div className="alert alert-danger mt-2 p-0">{errors.name}</div>
+              )}
+            </div>
+            {/* girl - boy - other */}
+            <div className="form-match">
+              <input
+                value={account.gender}
+                onChange={this.handleChange}
+                type="text"
+                className="form-control"
+                id="gender"
+                name="gender"
+                placeholder="Gender *"
+              ></input>
+              {errors.gender && (
+                <div className="alert alert-danger mt-2 p-0">{errors.gender}</div>
+              )}
+            </div>
+            {/* straight - gay - B */}
+            <div className="form-match">
+              <input
+                value={account.attract_to}
+                onChange={this.handleChange}
+                type="text"
+                className="form-control"
+                id="attract_to"
+                name="attract_to"
+                placeholder="Sex. orientation *"
+              ></input>
+              {errors.attract_to && (
+                <div className="alert alert-danger mt-2 p-0">{errors.attract_to}</div>
               )}
             </div>
 

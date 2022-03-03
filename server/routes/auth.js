@@ -4,12 +4,12 @@ const UserModel = require("../models/User");
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-	const { email, password, name } = req.body;
+	const { name, gender, attract_to, email, password} = req.body;
 	let user = await UserModel.findOne({ email });
 	if (user !== null) {
 		return res.sendStatus(400);
 	}
-	user = await UserModel.create({ email, password, name });
+	user = await UserModel.create({ name, gender, attract_to, email, password });
 	const token = jwtHelper.sign(
 		{
 			userId: user._id,
@@ -22,8 +22,11 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
 	const { email, password } = req.body;
+	console.log("routing posting email + password")
+	console.log(email,password)
 	let user = await UserModel.findOne({ email, password });
 	if (user === null) {
+		console.log("user is null")
 		return res.sendStatus(400);
 	}
 	const token = jwtHelper.sign(
