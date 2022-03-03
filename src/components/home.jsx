@@ -12,7 +12,6 @@ class Homse extends Component {
           <h1 className="text-dark text-center">MeetTelHai</h1>
           <h3 className="text-center">
             {/* <pre>{JSON.stringify(this.context.currentUser, null, 2)}</pre> */}
-            <br></br>
             Find your match,<br></br>
             Create relationships in Tel-Hai community <br></br>
           </h3>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SplitBillService from "../services/SplitBillService";
-import { AuthContext } from "./../contexts/auth";
+import { AuthContext } from "../contexts/auth";
 
 class JoinMatchPage extends Component {
   static contextType = AuthContext;
