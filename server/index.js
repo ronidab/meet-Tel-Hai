@@ -5,6 +5,7 @@ const matchRouter = require("./routes/matches");
 const authRouter = require("./routes/auth");
 const path = require('path');
 const jwtMiddleware = require("./middleware/jwt");
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 const PRODUCTION = process.env.NODE_ENV === 'production'
@@ -27,6 +28,7 @@ if (PRODUCTION) {
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/matches', jwtMiddleware, matchRouter);
+app.use(cors);
 if (PRODUCTION) {
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve('build/index.html'));

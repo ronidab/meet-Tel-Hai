@@ -46,9 +46,11 @@ class Signup extends Component {
   };
 
   handleSubmit = async (e) => {
+    console.log("Beginning registration process")
     e.preventDefault();
     const { name, gender,attract_to,email, password1 } = this.state.account;
     const errors = this.validate();
+    console.log("Sucessfully validated registration details")
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
@@ -60,6 +62,7 @@ class Signup extends Component {
       console.log(err);
       return;
     }
+    console.log("Moving to /Matches page")
     this.props.history.push("/Matches");
   };
 

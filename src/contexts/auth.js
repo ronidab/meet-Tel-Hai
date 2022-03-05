@@ -10,6 +10,7 @@ axios.interceptors.request.use(config => {
 	if (token) {
 		config.headers.Authorization = `Bearer ${token}`;
 	}
+	console.log("returning config");
 	return config;
 }, error => {
 	return Promise.reject(error);
@@ -26,9 +27,15 @@ export class AuthProvider extends React.Component {
 		this.state.currentUser = this.getUserFromLocalStorage();
 	}
 	register = async (name, gender, attract_to, email, password) => {
+		console.log("Auth Context recieving request:");
+		console.log(name,gender,attract_to,email,password);
 		const { data } = await axios.post("/api/auth/register", { name,gender, attract_to,  email, password });
+		const {userId, userName} = data; 
+		console.log(userId,userName);
 		localStorage.setItem(TOKEN_KEY, data.token);
 		const user = jwt.decode(data.token);
+		console.log(user);
+
 		this.setState({ currentUser: user });
 		return user;
 	};
