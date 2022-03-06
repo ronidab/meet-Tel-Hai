@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthContext } from "./../contexts/auth";
-import splitBillService from "../services/SplitBillService";
+import meetTelHaiService from "../services/meetTelHaiService";
 
 class AddExpence extends Component {
   static contextType = AuthContext;
@@ -31,7 +31,7 @@ class AddExpence extends Component {
     if (errors) return;
     try {
       //call server
-      const { data: expense } = await splitBillService.addExpense(
+      const { data: expense } = await meetTelHaiService.addExpense(
         matchId,
         this.state
       );

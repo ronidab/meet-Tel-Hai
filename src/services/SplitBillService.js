@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class SplitBillService {
+class meetTelHaiService {
 	allMatches = () => axios.get("/api/match");
 	matchById = (id) => axios.get(`/api/match/${id}`);
 	addMatch = ({ name }) => axios.post("/api/match", { name });
@@ -16,4 +16,4 @@ class SplitBillService {
 	};
 }
 
-export default new SplitBillService();
+export default new meetTelHaiService();

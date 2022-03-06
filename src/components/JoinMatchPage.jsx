@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SplitBillService from "../services/SplitBillService";
+import meetTelHaiService from "../services/meetTelHaiService";
 import { AuthContext } from "../contexts/auth";
 
 class JoinMatchPage extends Component {
@@ -11,7 +11,7 @@ class JoinMatchPage extends Component {
   async componentDidMount() {
     const { matchId } = this.props.match.params;
     console.log({ matchId });
-    const { data: match } = await SplitBillService.matchById(matchId);
+    const { data: match } = await meetTelHaiService.matchById(matchId);
     // check if user is allready in match
     this.setState({ match });
   }
@@ -19,7 +19,7 @@ class JoinMatchPage extends Component {
     const { matchId } = this.props.match.params;
     try {
       //call server
-      await SplitBillService.joinMatch(matchId);
+      await meetTelHaiService.joinMatch(matchId);
     } catch (err) {
       this.setState({
         apiError: "somthing went wrong- try filling all the fileds",

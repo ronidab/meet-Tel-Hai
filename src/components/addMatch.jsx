@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthContext } from "../contexts/auth";
-import splitBillService from "../services/SplitBillService";
+import meetTelHaiService from "../services/meetTelHaiService";
 
 class AddMatch extends Component {
   static contextType = AuthContext;
@@ -23,7 +23,7 @@ class AddMatch extends Component {
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
-      await splitBillService.addMatch({
+      await meetTelHaiService.addMatch({
         name: this.state.matchName,
       });
     } catch (err) {

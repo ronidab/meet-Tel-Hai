@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/auth";
 import AddMatch from "./addMatch";
-import splitBillService from "../services/SplitBillService";
+import meetTelHaiService from "../services/meetTelHaiService";
 
 class Matches extends Component {
   static contextType = AuthContext;
@@ -11,7 +11,8 @@ class Matches extends Component {
   };
   async componentDidMount() {
     try {
-      const { data } = await splitBillService.allMatches();
+      console.log("here at matches component ")
+      const { data } = await meetTelHaiService.allMatches();
       this.setState({ match: data });
     } catch (err) {
       console.error(err);

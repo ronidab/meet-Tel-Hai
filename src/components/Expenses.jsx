@@ -2,7 +2,7 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { AuthContext } from "../contexts/auth";
-import splitBillService from "../services/SplitBillService";
+import meetTelHaiService from "../services/meetTelHaiService";
 import AddExpence from "./addExpense";
 
 class Expenses extends Component {
@@ -23,7 +23,7 @@ class Expenses extends Component {
   }
   async componentDidMount() {
     const { matchId } = this.props.match.params;
-    const { data } = await splitBillService.matchById(matchId);
+    const { data } = await meetTelHaiService.matchById(matchId);
     this.setState({ ...data });
     console.log(data);
     console.log(this.context.currentUser);
@@ -34,7 +34,7 @@ class Expenses extends Component {
     const expenses = this.state.expenses.filter((e) => e._id !== expense._id);
     this.setState({ expenses });
     console.log("delete");
-    splitBillService.deleteExpense(matchId, expense._id);
+    meetTelHaiService.deleteExpense(matchId, expense._id);
   };
 
   userSum = (user) => {
