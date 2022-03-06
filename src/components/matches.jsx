@@ -42,8 +42,8 @@ class Matches extends Component {
     } else {
       return (
         <div className="container">
-          <h4 className="text-center">Choose a match or creat a new one:</h4>
-          {this.state.match.map((match, i) => (
+          <h4 className="text-center">go to "Meet" to make your matches</h4>
+          {/* {this.state.match.map((match, i) => (
             <div className="card p-2 m-2 border-light border-rounded">
               <Link
                 to={`expenses/${match._id}`}
@@ -53,8 +53,8 @@ class Matches extends Component {
               </Link>
               <pre></pre>
             </div>
-          ))}
-          <AddMatch setStateOfMatches={this.setStateOfMatches} />
+          ))} */}
+          {/* <AddMatch setStateOfMatches={this.setStateOfMatches} /> */}
         </div>
       );
     }
