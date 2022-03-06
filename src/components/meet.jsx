@@ -5,7 +5,7 @@ import { Button} from 'react-bootstrap';
 // import { AuthContext } from "./../contexts/auth";
 
 class Meet extends Component {
-
+    state = {};
     render(){
         console.log("here at meet!")
         return(

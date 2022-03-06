@@ -108,9 +108,12 @@ class Signup extends Component {
                 className="form-control"
                 id="profile_pic"
                 name="profile_pic"
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/jpg"
                 placeholder="profile picture *"
               ></input>
+                <div>
+              <button>Submit</button>
+                </div>
               {errors.profile_pic && (
                 <div className="alert alert-danger mt-2 p-0">{errors.profile_pic}</div>
               )}
