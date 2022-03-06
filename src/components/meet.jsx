@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import Header from "./Header/Header"
+import Header from "../Header/Header"
 // import { AuthContext } from "./../contexts/auth";
 
 class Meet extends Component {
-    Meet = () => {
+
+    
+
+    render(){
         return(
             <div className="meet">
                 <Header/>
