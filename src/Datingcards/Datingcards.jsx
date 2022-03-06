@@ -15,6 +15,7 @@ const Datingcards = () => {
     const outOfFrame = (name) => {
         console.log(name + " left the screen")
     }
+    console.log("before return at dating cards")
     return (
         <div className="datingCards">
             <div className="datingCards_container">
@@ -29,7 +30,6 @@ const Datingcards = () => {
                         <h3>{person.name}</h3>
                     </div>
                 </DatingCard>
-
             ))} 
             </div>
         </div>

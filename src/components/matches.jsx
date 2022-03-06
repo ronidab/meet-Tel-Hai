@@ -52,7 +52,9 @@ class Matches extends Component {
           <br></br>
           <br></br>
           <br></br>
-          <h4 className="text-center">Click on "Meet" to make your matches</h4>
+          <h4 className="text-center">You still don't have any match
+          <br></br>
+           Click on "Meet" to make some</h4>
           {/* {this.state.match.map((match, i) => (
             <div className="card p-2 m-2 border-light border-rounded">
               <Link
