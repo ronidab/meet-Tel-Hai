@@ -25,17 +25,17 @@ class AddExpence extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { matchId, onAddExpense } = this.props;
+    const { matchId, onAddMsg } = this.props;
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
       //call server
-      const { data: expense } = await meetTelHaiService.addExpense(
+      const { data: expense } = await meetTelHaiService.addMsg(
         matchId,
         this.state
       );
-      onAddExpense(expense);
+      onAddMsg(expense);
     } catch (err) {
       this.setState({
         apiError: "somthing went wrong- try filling all the fileds",

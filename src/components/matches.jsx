@@ -11,7 +11,6 @@ class Matches extends Component {
   };
   async componentDidMount() {
     try {
-      console.log("here at matches component ")
       const { data } = await meetTelHaiService.allMatches();
       this.setState({ match: data });
     } catch (err) {
@@ -26,11 +25,13 @@ class Matches extends Component {
 
   render() {
     if (this.state.match === null) {
+      console.log("first if")
       return <p>loading...</p>;
     }
     if (this.state.match.length === 0) {
+      console.log("second if")
       return (
-        <div className="container">
+        <div className="container bg-danger">
           <h2 className="text-center">
             {" "}
             You are not apart of any match, creat a new match or ask you'r
@@ -40,13 +41,14 @@ class Matches extends Component {
         </div>
       );
     } else {
+      console.log("else")
       return (
-        <div className="container">
-          <h4 className="text-center">go to "Meet" to make your matches</h4>
+        <div className="container bg-danger">
+          <h4 className="text-center">Click on "Meet" to make your matches</h4>
           {/* {this.state.match.map((match, i) => (
             <div className="card p-2 m-2 border-light border-rounded">
               <Link
-                to={`expenses/${match._id}`}
+                to={`msgs/${match._id}`}
                 className="btn btn-outline-info"
               >
                 {match.name}

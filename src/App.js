@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import Expenses from "./components/Expenses";
+import Msgs from "./components/Msgs";
 import Matches from "./components/matches";
 import NavBar from "./components/navBar";
 import Signup from "./components/signup";
@@ -17,7 +17,7 @@ function App() {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<ProtectedRoute path="/matches" component={Matches} />
-					<ProtectedRoute path="/expenses/:matchId" component={Expenses} />
+					<ProtectedRoute path="/expenses/:matchId" component={Msgs} />
 					<ProtectedRoute path="/join/:matchId" component={JoinMatchPage} />
 					<Route path="/signup" component={Signup} />
 					<Route path="/login" component={Login} />

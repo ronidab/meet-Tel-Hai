@@ -5,10 +5,10 @@ class meetTelHaiService {
 	matchById = (id) => axios.get(`/api/match/${id}`);
 	addMatch = ({ name }) => axios.post("/api/match", { name });
 
-	addExpense = (matchId, { title, sum, category, date }) => {
+	addMsg = (matchId, { title, sum, category, date }) => {
 		return axios.post(`/api/match/${matchId}`, { title, sum, category, date });
 	};
-	deleteExpense = (matchId, expenseId) => {
+	deleteMsg = (matchId, expenseId) => {
 		return axios.delete(`/api/match/${matchId}/${expenseId}`);
 	};
 	joinMatch = (matchId) => {

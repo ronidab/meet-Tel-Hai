@@ -45,7 +45,7 @@ router.post("/:matchId", async (req, res) => {
 	const { title, sum, category, date } = req.body;
 	let match = await MatchModel.findById(MatchId);
 	if (!match) return res.status(404);
-	// There is no such thing ExpenseModel
+	// There is no such thing MsgModel
 
 	const expense = {
 		_id: new mongoose.Types.ObjectId(),
