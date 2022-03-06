@@ -28,6 +28,7 @@ class Matches extends Component {
       console.log("first if")
       return <p>loading...</p>;
     }
+    console.log(this.state.match.length)
     if (this.state.match.length === 0) {
       console.log("second if")
       return (
@@ -44,6 +45,12 @@ class Matches extends Component {
       console.log("else")
       return (
         <div className="container bg-danger">
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+
           <h4 className="text-center">Click on "Meet" to make your matches</h4>
           {/* {this.state.match.map((match, i) => (
             <div className="card p-2 m-2 border-light border-rounded">
