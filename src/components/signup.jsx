@@ -104,11 +104,11 @@ class Signup extends Component {
               <input
                 value={account.profile_pic}
                 onChange={this.handleChange}
-                type="text"
+                type="image"
                 className="form-control"
                 id="profile_pic"
                 name="profile_pic"
-                placeholder="profile picture(url) *"
+                placeholder="profile picture *"
               ></input>
               {errors.profile_pic && (
                 <div className="alert alert-danger mt-2 p-0">{errors.profile_pic}</div>
@@ -123,7 +123,7 @@ class Signup extends Component {
                 className="form-control"
                 id="age"
                 name="age"
-                placeholder="your age *"
+                placeholder="age *"
               ></input>
               {errors.age && (
                 <div className="alert alert-danger mt-2 p-0">{errors.age}</div>
