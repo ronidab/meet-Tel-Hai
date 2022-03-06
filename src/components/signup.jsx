@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class Signup extends Component {
   static contextType = AuthContext;
   state = {
-    account: { name: "",gender: "", attract_to:"", email: "", password1: "", password2: "" },
+    account: { name: "",profile_pic: "", age:"", email: "", password1: "", password2: "" },
     errors: {},
     apiError: null,
   };
@@ -18,12 +18,12 @@ class Signup extends Component {
       errors.name = "Name is requierd.";
     }
 
-    if (account.gender.trim() === "") {
-      errors.gender = "gender is requierd.";
+    if (account.profile_pic.trim() === "") {
+      errors.profile_pic = "profile_pic is requierd.";
     }
 
-    if (account.attract_to.trim() === "") {
-      errors.attract_to = "attraction is requierd.";
+    if (account.age.trim() === "") {
+      errors.age = "your age is requierd.";
     }
 
     if (account.email.trim() === "") {
@@ -47,12 +47,12 @@ class Signup extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, gender,attract_to,email, password1 } = this.state.account;
+    const { name, profile_pic,age,email, password1 } = this.state.account;
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
-      await this.context.register(name,gender,attract_to, email, password1);
+      await this.context.register(name,profile_pic,age, email, password1);
     } catch (err) {
       this.setState({
         apiError: "somthing went wrong- try filling all the fileds",
@@ -102,31 +102,31 @@ class Signup extends Component {
             {/* girl - boy - other */}
             <div className="form-match">
               <input
-                value={account.gender}
+                value={account.profile_pic}
                 onChange={this.handleChange}
                 type="text"
                 className="form-control"
-                id="gender"
-                name="gender"
+                id="profile_pic"
+                name="profile_pic"
                 placeholder="Gender *"
               ></input>
-              {errors.gender && (
-                <div className="alert alert-danger mt-2 p-0">{errors.gender}</div>
+              {errors.profile_pic && (
+                <div className="alert alert-danger mt-2 p-0">{errors.profile_pic}</div>
               )}
             </div>
             {/* straight - gay - B */}
             <div className="form-match">
               <input
-                value={account.attract_to}
+                value={account.age}
                 onChange={this.handleChange}
                 type="text"
                 className="form-control"
-                id="attract_to"
-                name="attract_to"
+                id="age"
+                name="age"
                 placeholder="Sex. orientation *"
               ></input>
-              {errors.attract_to && (
-                <div className="alert alert-danger mt-2 p-0">{errors.attract_to}</div>
+              {errors.age && (
+                <div className="alert alert-danger mt-2 p-0">{errors.age}</div>
               )}
             </div>
 
