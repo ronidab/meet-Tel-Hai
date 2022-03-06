@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "react-ui-cards";
+import { Button} from 'react-bootstrap';
 // import Datingcards from "../Datingcards/Datingcards"
 // import { AuthContext } from "./../contexts/auth";
 
