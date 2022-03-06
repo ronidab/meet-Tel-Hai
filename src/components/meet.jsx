@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import Header from "../Header/Header"
+import Datingcards from "../Datingcards/Datingcards"
 // import { AuthContext } from "./../contexts/auth";
 
 class Meet extends Component {
-
-    
-
     render(){
         return(
             <div className="meet">
-                <Header/>
+                <Datingcards/>
             </div>
         )
     }
