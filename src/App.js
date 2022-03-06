@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Msgs from "./components/Msgs";
+import Meet from "./components/meet";
 import Matches from "./components/matches";
 import NavBar from "./components/navBar";
 import Signup from "./components/signup";

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Datingcards from "../Datingcards/Datingcards"
+import Card from "react-ui-cards";
+// import Datingcards from "../Datingcards/Datingcards"
 // import { AuthContext } from "./../contexts/auth";
 
 class Meet extends Component {
@@ -19,7 +20,6 @@ class Meet extends Component {
                 <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
                 </Card>
-                {/* <Datingcards/> */}
             </div>
         );
     }
