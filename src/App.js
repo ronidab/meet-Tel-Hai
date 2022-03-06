@@ -9,7 +9,6 @@ import Login from "./components/login";
 import Home from "./components/home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JoinMatchPage from "./components/JoinMatchPage";
-import Meet from "./components/meet";
 
 function App() {
 	return (
