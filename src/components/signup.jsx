@@ -104,10 +104,11 @@ class Signup extends Component {
               <input
                 value={account.profile_pic}
                 onChange={this.handleChange}
-                type="image"
+                type="file"
                 className="form-control"
                 id="profile_pic"
                 name="profile_pic"
+                accept="image/png, image/jpeg"
                 placeholder="profile picture *"
               ></input>
               {errors.profile_pic && (
