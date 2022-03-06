@@ -8,6 +8,7 @@ import Login from "./components/login";
 import Home from "./components/home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import JoinMatchPage from "./components/JoinMatchPage";
+import Meet from "./components/meet";
 
 function App() {
 	return (
@@ -16,8 +17,10 @@ function App() {
 			<div className="col">
 				<Switch>
 					<Route exact path="/" component={Home} />
+					<ProtectedRoute path="/meet" component={Meet} />
+					<ProtectedRoute path="/myProfile" component={MyProfile} />
 					<ProtectedRoute path="/matches" component={Matches} />
-					<ProtectedRoute path="/expenses/:matchId" component={Msgs} />
+					<ProtectedRoute path="/msgs/:matchId" component={Msgs} />
 					<ProtectedRoute path="/join/:matchId" component={JoinMatchPage} />
 					<Route path="/signup" component={Signup} />
 					<Route path="/login" component={Login} />
