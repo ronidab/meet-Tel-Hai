@@ -18,7 +18,7 @@ class NavBar extends Component {
           </NavLink>
           {/*rander next code only of there is a current user*/}
           {this.context.currentUser && (
-            <NavLink className="navbar-brand" to="/match">
+            <NavLink className="navbar-brand" to="/matches">
               My Matches
             </NavLink>
           )}
