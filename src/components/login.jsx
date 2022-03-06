@@ -41,7 +41,7 @@ class Login extends Component {
       return;
     }
     // change to swiping page
-    this.props.history.push("/Matches"); 
+    this.props.history.push("/meet"); 
   };
 
   handleChange = (e) => {

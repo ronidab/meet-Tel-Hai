@@ -60,7 +60,7 @@ class Signup extends Component {
       console.log(err);
       return;
     }
-    this.props.history.push("/Matches");
+    this.props.history.push("/meet");
   };
 
   isStrongPassword(password) {
