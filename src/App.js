@@ -18,7 +18,6 @@ function App() {
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<ProtectedRoute path="/meet" component={Meet} />
-					<ProtectedRoute path="/myProfile" component={MyProfile} />
 					<ProtectedRoute path="/matches" component={Matches} />
 					<ProtectedRoute path="/msgs/:matchId" component={Msgs} />
 					<ProtectedRoute path="/join/:matchId" component={JoinMatchPage} />
