@@ -28,6 +28,11 @@ class NavBar extends Component {
             </NavLink>
           )}
           {this.context.currentUser && (
+            <NavLink className="navbar-brand" to="/myProfile">
+              My Profile
+            </NavLink>
+          )}
+          {this.context.currentUser && (
             <div className="d-flex ml-auto">
               <span className="navbar-text mx-2">
                 Hello {this.context.currentUser.userName}

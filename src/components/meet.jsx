@@ -5,6 +5,7 @@ import Datingcards from "../Datingcards/Datingcards"
 class Meet extends Component {
 
     render(){
+        console.log("here at meet!")
         return(
             <div className="meet">
                 <Card style={{ width: '18rem' }}>
