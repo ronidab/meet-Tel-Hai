@@ -11,7 +11,7 @@ class Meet extends Component {
         return(
             <div className="meet">
                 <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src="/homepagepic.jpg" />
                 <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
