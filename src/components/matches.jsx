@@ -30,6 +30,9 @@ class Matches extends Component {
       return <p>loading...</p>;
     }
     console.log(this.state.match.length)
+    console.log(this.state.match.name)
+    console.log(this.state.match)
+
     if (this.state.match.length === 0) {
       console.log("second if")
       return (
