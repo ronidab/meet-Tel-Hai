@@ -21,7 +21,7 @@ class Meet extends Component {
                 </Card>
                 {/* <Datingcards/> */}
             </div>
-        )
+        );
     }
 }
 
