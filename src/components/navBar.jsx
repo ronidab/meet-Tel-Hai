@@ -23,7 +23,7 @@ class NavBar extends Component {
             </NavLink>
           )}
           {this.context.currentUser && (
-            <NavLink className="navbar-brand" to="/matches">
+            <NavLink className="navbar-brand" to="/meet">
               Meet
             </NavLink>
           )}
