@@ -11,6 +11,7 @@ class Matches extends Component {
   };
   async componentDidMount() {
     try {
+      console.log("start here?")
       const { data } = await meetTelHaiService.allMatches();
       this.setState({ match: data });
     } catch (err) {
@@ -44,13 +45,13 @@ class Matches extends Component {
     } else {
       console.log("else")
       return (
-        <div className="container bg-danger">
+        <div className="row h-100 bg-danger">
+        <div className="container">
           <br></br>
           <br></br>
           <br></br>
           <br></br>
           <br></br>
-
           <h4 className="text-center">Click on "Meet" to make your matches</h4>
           {/* {this.state.match.map((match, i) => (
             <div className="card p-2 m-2 border-light border-rounded">
@@ -64,6 +65,7 @@ class Matches extends Component {
             </div>
           ))} */}
           {/* <AddMatch setStateOfMatches={this.setStateOfMatches} /> */}
+        </div>
         </div>
       );
     }
