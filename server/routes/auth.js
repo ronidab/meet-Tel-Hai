@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
 	const { name, gender, attract_to, email, password} = req.body;
-	console.log("Recieving Registration Request with the following:");
+	console.log("Route Auth Recieving Registration Request with the following:");
 	console.log(name,gender,attract_to,email,password);
 	let user = await UserModel.findOne({ email });
 	if (user !== null) {
@@ -13,7 +13,8 @@ router.post("/register", async (req, res) => {
 		console.log("User already exists")
 	}
 	user = await UserModel.create({ name, gender, attract_to, email, password });
-	console.log("Creation of user model sucessfull")
+	console.log("Creation of user model sucessfull");
+	console.log(user);
 	const token = jwtHelper.sign(
 		{
 			userId: user._id,
