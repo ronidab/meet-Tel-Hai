@@ -1,15 +1,22 @@
 const express = require("express");
 const jwtHelper = require("jsonwebtoken");
 const UserModel = require("../models/User");
+
+
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-	const { name, profile_pic, age , phone_number, email, password} = req.body;
+	const { name, gender, attract_to, email, password } = req.body;
 	let user = await UserModel.findOne({ email });
 	if (user !== null) {
 		return res.sendStatus(400);
 	}
-	user = await UserModel.create({ name, profile_pic, age,phone_number,  email, password });
+
+	user = await UserModel.create({ name, gender, attract_to, email, password });
+	console.log(user);
+	console.log("Creation of user model sucessfull");
+	ret = await UserModel.updateMany({},{$addToSet:{"relevant":user._id}});
+	console.log("Attempting to print ret:",ret);
 	const token = jwtHelper.sign(
 		{
 			userId: user._id,
@@ -22,11 +29,8 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
 	const { email, password } = req.body;
-	console.log("routing posting email + password")
-	console.log(email,password)
 	let user = await UserModel.findOne({ email, password });
 	if (user === null) {
-		console.log("user is null")
 		return res.sendStatus(400);
 	}
 	const token = jwtHelper.sign(

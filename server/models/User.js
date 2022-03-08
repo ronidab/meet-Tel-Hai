@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
+const UserModel = require("../models/User");
+
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
 	name: { type: String, required: true },
 	email: { type: String, required: true, unique: true },
-	age: {type: Number, required: true, unique:true},
-	phone_number: {type:Number, required:true, unique:true},
-	profile_pic: {type: String, required: true, unique: true},
+	gender: {type: String, required: true, unique: true},
+	attract_to: {type: String, required: true, unique: false},
 	password: { type: String, required: true },
 	matches: [{ type: mongoose.Schema.Types.ObjectId, ref: "Match" }],
+	relevant:[{type:mongoose.Schema.Types.ObjectId,ref:"person"}],
+	swiped_yes:[{type:mongoose.Schema.Types.ObjectId,ref:"matched_person"}]
+
 });
 
 module.exports = mongoose.model("User", userSchema);

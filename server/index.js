@@ -3,8 +3,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const matchRouter = require("./routes/matches");
 const authRouter = require("./routes/auth");
+const interactionRouter = require("./routes/interactions");
 const path = require('path');
 const jwtMiddleware = require("./middleware/jwt");
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 const PRODUCTION = process.env.NODE_ENV === 'production'
@@ -21,12 +23,14 @@ mongoose
 
 
 const app = express();
+app.use(cors());
 if (PRODUCTION) {
 	app.use(express.static(path.resolve('build')));
 }
 app.use(express.json());
 app.use('/api/auth', authRouter);
-app.use('/api/match', jwtMiddleware, matchRouter);
+app.use('/api/interact', interactionRouter);
+app.use('/api/matches', jwtMiddleware, matchRouter);
 if (PRODUCTION) {
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve('build/index.html'));

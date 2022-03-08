@@ -7,11 +7,7 @@ const matchSchema = new Schema({
   expenses: {
     type: [
       {
-        title: { type: String, required: true },
-        sum: { type: Number, required: true },
-        category: { type: String, required: true },
-        date: { type: Date, required: true, default: Date.now },
-        user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        title: { type: String, required: true }
       },
     ],
   },
