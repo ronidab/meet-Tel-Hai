@@ -26,7 +26,7 @@ if (PRODUCTION) {
 }
 app.use(express.json());
 app.use('/api/auth', authRouter);
-app.use('/api/matches', jwtMiddleware, matchRouter);
+app.use('/api/match', jwtMiddleware, matchRouter);
 if (PRODUCTION) {
 	app.get('*', (req, res) => {
 		res.sendFile(path.resolve('build/index.html'));

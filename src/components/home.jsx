@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import "./home.css"
 import { AuthContext } from "./../contexts/auth";
-
+import HomeImage from './homepagepic.jpg';
 class Homse extends Component {
   static contextType = AuthContext;
   state = {};
@@ -19,7 +20,10 @@ class Homse extends Component {
             
           <h5 className="text-center">
             swipe right or left, maybe your love is there<br></br>
-          </h5>          
+          </h5>
+          <div className="image-container">
+            <img src={HomeImage} alt="" className="center"/>
+          </div>
         </div>
       </div>
     );

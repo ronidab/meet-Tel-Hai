@@ -8,8 +8,8 @@ import Datingcards from "../Datingcards/Datingcards";
 class Meet extends Component {
     state = {};
     render(){
-        console.log("here at meet!")
         return(
+            
             <Datingcards/>
             // <div className="meet">
             //     <Card style={{ width: '18rem' }}>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AuthContext } from "./../contexts/auth";
+import { AuthContext } from "../contexts/auth";
 import meetTelHaiService from "../services/meetTelHaiService";
 
 class AddExpence extends Component {

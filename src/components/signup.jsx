@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class Signup extends Component {
   static contextType = AuthContext;
   state = {
-    account: { name: "",profile_pic: "", age:"", email: "", password1: "", password2: "" },
+    account: { name: "",profile_pic: "", age:"",phone_number:"", email: "", password1: "", password2: "" },
     errors: {},
     apiError: null,
   };
@@ -19,11 +19,19 @@ class Signup extends Component {
     }
 
     if (account.profile_pic.trim() === "") {
-      errors.profile_pic = "profile_pic is requierd.";
+      errors.profile_pic = "profile picture is requierd.";
     }
 
     if (account.age.trim() === "") {
       errors.age = "your age is requierd.";
+    }
+
+    if (account.phone_number.trim() === "") {
+      errors.phone_number = "your phone number is requierd.";
+    }
+
+    if(account.phone_number.length != 10){
+      errors.phone_number = "phone number is illegal. ";
     }
 
     if (account.email.trim() === "") {
@@ -47,12 +55,12 @@ class Signup extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, profile_pic,age,email, password1 } = this.state.account;
+    const { name, profile_pic,age,phone_number,email, password1 } = this.state.account;
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
     try {
-      await this.context.register(name,profile_pic,age, email, password1);
+      await this.context.register(name,profile_pic,age,phone_number, email, password1);
     } catch (err) {
       this.setState({
         apiError: "somthing went wrong- try filling all the fileds",
@@ -111,14 +119,11 @@ class Signup extends Component {
                 accept="image/png, image/jpeg, image/jpg"
                 placeholder="profile picture *"
               ></input>
-                <div>
-              <button>Submit</button>
-                </div>
               {errors.profile_pic && (
                 <div className="alert alert-danger mt-2 p-0">{errors.profile_pic}</div>
               )}
             </div>
-            {/* straight - gay - B */}
+
             <div className="form-match">
               <input
                 value={account.age}
@@ -131,6 +136,21 @@ class Signup extends Component {
               ></input>
               {errors.age && (
                 <div className="alert alert-danger mt-2 p-0">{errors.age}</div>
+              )}
+            </div>
+
+            <div className="form-match">
+              <input
+                value={account.phone_number}
+                onChange={this.handleChange}
+                type="text"
+                className="form-control"
+                id="phone_number"
+                name="phone_number"
+                placeholder="phone number *"
+              ></input>
+              {errors.phone_number && (
+                <div className="alert alert-danger mt-2 p-0">{errors.phone_number}</div>
               )}
             </div>
 

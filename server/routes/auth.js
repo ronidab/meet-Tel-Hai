@@ -4,12 +4,12 @@ const UserModel = require("../models/User");
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-	const { name, profile_pic, attract_to, email, password} = req.body;
+	const { name, profile_pic, age , phone_number, email, password} = req.body;
 	let user = await UserModel.findOne({ email });
 	if (user !== null) {
 		return res.sendStatus(400);
 	}
-	user = await UserModel.create({ name, profile_pic, attract_to, email, password });
+	user = await UserModel.create({ name, profile_pic, age,phone_number,  email, password });
 	const token = jwtHelper.sign(
 		{
 			userId: user._id,
